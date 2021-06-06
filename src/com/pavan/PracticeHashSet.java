@@ -50,7 +50,7 @@ public class PracticeHashSet {
     }
 
     private static void performSetOperations() {
-        Integer[] A = {22, 45,33, 66, 55, 34, 77};
+        Integer[] A = {22, 45, 33, 66, 55, 34, 77};
         Integer[] B = {33, 2, 83, 45, 3, 12, 55};
 
         Set<Integer> set1 = new HashSet<>(Arrays.asList(A));
@@ -64,14 +64,14 @@ public class PracticeHashSet {
 
         Set<Integer> unionSet = new HashSet<>(set1);
         unionSet.addAll(set2);
-        System.out.println("Size of Union Set : " + unionSet.size() + " "+ unionSet);
+        System.out.println("Size of Union Set : " + unionSet.size() + " " + unionSet);
 
         // Finding Intersection of set1 and set2
         System.out.println("Intersection of set1 and set2 : Find Common elements from set 1 and set 2 and avoid duplicates");
 
         Set<Integer> intersectionSet = new HashSet<>(set1);
         intersectionSet.retainAll(set2);
-        System.out.println("Size of Union Set : " + intersectionSet.size() + " "+ intersectionSet);
+        System.out.println("Size of Union Set : " + intersectionSet.size() + " " + intersectionSet);
 
         // Finding Difference of set1 and set2
         Set<Integer> difference_data = new HashSet<Integer>(set1);
@@ -85,19 +85,23 @@ public class PracticeHashSet {
 
     private static void sortCustomSetObjects() {
         Employee e1 = new Employee(1234, 75000, "pavan", "khachane");
+        Employee e8 = new Employee(1001, 9999999, "xyz", "M");
         Employee e2 = new Employee(1234, 75000, "Pavan", "Khachane");
         Employee e3 = new Employee(2081, 50000, "Prasanna", "Phirke");
         Employee e4 = new Employee(4567, 999999, "Satyam", "Wakekar");
         Employee e5 = new Employee(1234, 75000, "Pavan", "K");
         Employee e6 = new Employee(1000, 9999999, "Sameer", "M");
+        Employee e7 = new Employee(1002, 9999999, "abCD", "M");
 
         Set<Employee> employeeSet = new HashSet<>();
         employeeSet.add(e1);
+        employeeSet.add(e8);
         employeeSet.add(e2);
         employeeSet.add(e3);
         employeeSet.add(e4);
         employeeSet.add(e5);
         employeeSet.add(e6);
+        employeeSet.add(e7);
         System.out.println("HashSet without Comparable/Comparator");
         System.out.println(employeeSet);
         // Cant use  Collection.sort because is supports List in input not set
@@ -105,26 +109,26 @@ public class PracticeHashSet {
 
         // Convert to List and then sort
         List<Employee> employeeList = new ArrayList<>(employeeSet);
-        Collections.sort(employeeList);
+        Collections.sort(employeeList,new EmployeeComparatorByID());
 
         System.out.println();
         System.out.println("HashSet with Comparable : Sort by Employee.id");
         System.out.println(employeeList);
 
         System.out.println();
-        System.out.println("Sort list with Java 8");
+        System.out.println("Sort list by Last Name with Java 8");
         employeeList.sort(Comparator.comparing(employee -> employee.getLastName().toLowerCase()));
         System.out.println(employeeList);
 
         // Convert HashSet to TreeSet
         System.out.println("===============================");
-        for(Employee e : employeeSet){
+        for (Employee e : employeeSet) {
             System.out.print(e);
-            System.out.println( " ==> " + e.hashCode());
+            System.out.println(" ==> " + e.hashCode());
         }
         System.out.println("size before : " + employeeSet.size());
         System.out.println("Sort by converting Hashset to TreeSet");
-        Set<Employee> employeeTreeSet= new TreeSet<>(employeeSet);
+        Set<Employee> employeeTreeSet = new TreeSet<>(employeeSet);
         System.out.println(employeeTreeSet);
         System.out.println("size before : " + employeeTreeSet.size());
 
@@ -138,8 +142,10 @@ public class PracticeHashSet {
         Employee e5 = new Employee(1234, 75000, "Pavan", "K");
         Employee e6 = new Employee(1000, 9999999, "Sameer", "M");
 
+
         Set<Employee> employeeSet = new HashSet<>();
         employeeSet.add(e1);
+
         employeeSet.add(e2);
         employeeSet.add(e3);
         employeeSet.add(e4);

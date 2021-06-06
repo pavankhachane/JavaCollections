@@ -54,10 +54,10 @@ public class Employee implements Comparable<Employee>{
         if (this == o) return true;
         if (!(o instanceof Employee)) return false;
         Employee employee = (Employee) o;
-        return id == employee.id &&
+        return (id == employee.id &&
                 salary == employee.salary &&
-                firstName.equalsIgnoreCase(employee.firstName) &&
-                lastName.equalsIgnoreCase(employee.lastName);
+                lastName.equalsIgnoreCase(employee.lastName) &&
+                 firstName.equalsIgnoreCase(employee.firstName));
     }
 
     @Override
@@ -85,13 +85,26 @@ public class Employee implements Comparable<Employee>{
     public int compareTo(Employee o) {
       //  return this.id == o.getId() ? 0 : (this.id > o.getId() ? 1 : -1);
        // return this.getSalary() == o.getSalary() ? 0 : (this.getSalary() > o.getSalary() ? 1 : -1);
-        return this.getFirstName().compareToIgnoreCase(o.getFirstName());
+        int isEqual;
+
+        if (this.getFirstName().compareToIgnoreCase(o.getFirstName()) == 0){
+            if (this.getLastName().compareToIgnoreCase(o.getLastName()) == 0){
+                isEqual = 0;
+            }else {
+                isEqual = this.getLastName().compareToIgnoreCase(o.getLastName());
+            }
+        }else{
+            isEqual = this.getFirstName().compareToIgnoreCase(o.getFirstName());
+        }
+
+        return isEqual;
     }
 }
 
-class EmployeeComparator implements Comparator<Employee>{
+class EmployeeComparatorByID implements Comparator<Employee>{
     @Override
     public int compare(Employee o1, Employee o2) {
-        return o1.getLastName().compareToIgnoreCase(o2.getLastName());
+        return o1.getId()==o2.getId() ? 0 :
+                (o1.getId() > o2.getId() ? 1 : -1);
     }
 }
