@@ -81,6 +81,59 @@ public class PracticeHashSet {
     }
 
     private static void compareCustomSetObjects() {
+
+        List<String> list1 = new LinkedList<>(Arrays.asList("foo", "bar", "baz", "foo", "bar", "baz", "Hinjawadi",
+                "Magarpatta", "Hinjawadi",  "Wakad", "Hadapsar", "BalewadiHighStreet", "Baner"));
+
+        List<String> list2 = new LinkedList<>(Arrays.asList("foo", "bar", "baz", "foo", "bar", "baz", "Hinjawadi",
+                "Magarpatta", "Hinjawadi",  "Wakad", "Hadapsar", "BalewadiHighStreet", "Baner"));
+
+        Set<String> set1 = new HashSet<>();
+        Set<String> set2 = new HashSet<>();
+
+        set1.addAll(list1);
+        set2.addAll(list2);
+
+        System.out.println(set1);
+        System.out.println(set2);
+        System.out.println("set1.equals(set2) => " + set1.equals(set2));
+
+        System.out.println("set == set2  => " + (set1 == set2));
+
+        Employee e1 = new Employee(1234, 75000, "pavan", "khachane");
+        Employee e8 = new Employee(1001, 9999999, "xyz", "M");
+        Employee e2 = new Employee(1234, 75000, "Pavan", "Khachane");
+        Employee e3 = new Employee(2081, 50000, "Prasanna", "Phirke");
+        Set<Employee> employeeSet1 = new HashSet<>();
+        employeeSet1.add(e1);
+        employeeSet1.add(e8);
+        employeeSet1.add(e2);
+        employeeSet1.add(e3);
+
+        /*Employee e4 = new Employee(4567, 999999, "Satyam", "Wakekar");
+        Employee e5 = new Employee(1234, 75000, "Pavan", "K");
+        Employee e6 = new Employee(1000, 9999999, "Sameer", "M");
+        Employee e7 = new Employee(1002, 9999999, "abCD", "M");*/
+
+        Employee b1 = new Employee(1234, 75000, "PAVAN", "khachane");
+        Employee b2 = new Employee(1001, 9999999, "XYZ", "M");
+        Employee b3 = new Employee(1234, 75000, "Pavan", "Khachane");
+        Employee b4 = new Employee(2081, 50000, "prasanna", "Phirke");
+
+        Set<Employee> employeeSet2 = new HashSet<>();
+        employeeSet2.add(b1);
+        employeeSet2.add(b2);
+        employeeSet2.add(b3);
+        employeeSet2.add(b4);
+
+        System.out.println();
+        System.out.println("==================Custom Obj Set =================================");
+        System.out.println(employeeSet1);
+        System.out.println(employeeSet2);
+        System.out.println("set1.equals(set2) => " + employeeSet1.equals(employeeSet2));
+
+        System.out.println("set == set2  => " + (employeeSet1 == employeeSet2));
+
     }
 
     private static void sortCustomSetObjects() {

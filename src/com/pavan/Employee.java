@@ -73,7 +73,7 @@ public class Employee implements Comparable<Employee>{
 
     @Override
     public String toString() {
-        return "{" +
+        return "\n" + "{" +
                 "id=" + id +
                 ", salary=" + salary +
                 ", firstName='" + firstName + '\'' +
